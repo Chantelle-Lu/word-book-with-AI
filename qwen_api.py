@@ -15,7 +15,7 @@ class QwenAPI:
     def generate_story(self, word):
         # 如果用户定义了prompt，使用用户定义的prompt；否则使用默认prompt
         if self.custom_prompt:
-            formatted_prompt = self.custom_prompt.format(word=word)  # 确保用户的prompt中可以使用{word}来插入单词
+            formatted_prompt = self.default_prompt.format(word=word, user_input=self.custom_prompt)
         else:
             user_input = self.custom_prompt if self.custom_prompt else "编一个有关这个单词的小故事"
             formatted_prompt = self.default_prompt.format(word=word, user_input=user_input)
