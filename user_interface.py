@@ -61,6 +61,7 @@ class UserInterface:
 
         
     def query_word(self):
+        self.qwen_api.update_prompt(None)
         word = self.word_entry.get()
         if word:
             result = self.youdao_api.connect(word)  # 假设这是调用API的方法
