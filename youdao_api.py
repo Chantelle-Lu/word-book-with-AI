@@ -46,15 +46,7 @@ class YoudaoAPI:
         response = requests.post(self.youdao_url, data=data, headers=headers)
         return response.json()
 
-# 使用示例
-if __name__ == '__main__':
-    app_key = '7a46ca68f52ee337'
-    app_secret = '0kSGGZYEbxUXi9q4gGvCNZcZZTSMnyVX'
-    api = YoudaoAPI(app_key, app_secret)
-    
-    word = input('请输入单词：')
-    result = api.connect(word)
-    print(json.dumps(result, indent=4, ensure_ascii=False))
+
 
         
 

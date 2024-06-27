@@ -12,12 +12,12 @@ class QwenAPI:
         self.custom_prompt = None  # 用于保存用户通过Prompt菜单输入的文本
         dashscope.api_key = self.api_key  # 设置API密钥
 
-    def generate_story(self, word):
+    def generate_example(self, word):
         # 如果用户定义了prompt，使用用户定义的prompt；否则使用默认prompt
         if self.custom_prompt:
             formatted_prompt = self.default_prompt.format(word=word, user_input=self.custom_prompt)
         else:
-            user_input = self.custom_prompt if self.custom_prompt else "编一个有关这个单词的小故事"
+            user_input = self.custom_prompt if self.custom_prompt else "用英文生成一个该单词的例句，40词以内，并提供中文翻译"
             formatted_prompt = self.default_prompt.format(word=word, user_input=user_input)
 
         try:
@@ -42,15 +42,4 @@ class QwenAPI:
         """更新用户输入的prompt部分。"""
         self.custom_prompt = new_prompt
 
-
-# 示例使用
-if __name__ == '__main__':
-    API_KEY = 'sk-3b736ed70cc74c90b1aec671161ea43f'
-    qwen_api = QwenAPI(API_KEY)
-    word = 'amaze'  # 示例单词
-    story = qwen_api.generate_story(word)
-    if story:
-        print("趣味小故事:", story)
-    else:
-        print("未能生成小故事。")
 
